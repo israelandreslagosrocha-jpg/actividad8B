@@ -1,4 +1,4 @@
-import('./mixer.js').catch(() => {
+import('./mixer.js?v=3').catch(() => {
   document.querySelector('#play').disabled = true;
   document.querySelector('#audio-status').textContent = 'No se pudieron cargar las capas del mezclador. Recarga la página para volver a intentar.';
 });
@@ -120,6 +120,24 @@ form.addEventListener('submit', event => {
 });
 
 document.querySelector('#print').addEventListener('click', () => window.print());
+
+const player = document.querySelector('#version-player');
+const playerFrame = player.querySelector('iframe');
+const playerLink = document.querySelector('#youtube-link');
+document.querySelectorAll('[data-embed]').forEach(link => {
+  link.addEventListener('click', event => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    playerFrame.src = `https://www.youtube-nocookie.com/embed/${link.dataset.embed}?playsinline=1&hl=es&autoplay=1`;
+    const title = `${link.dataset.caption} · The Weeknd`;
+    playerFrame.title = `Blinding Lights · ${title}`;
+    playerLink.href = link.href;
+    player.querySelector('[data-embed]').hidden = player.contains(link);
+    document.querySelector('#version-title').textContent = title;
+    player.scrollIntoView({ block: 'center' });
+    playerFrame.focus({ preventScroll: true });
+  });
+});
 
 document.querySelector('#download').addEventListener('click', () => {
   const data = answers();

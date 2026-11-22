@@ -6,9 +6,9 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#100e18">
 <title>Blinding Lights · Laboratorio de escucha</title>
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 <link rel="preload" href="assets/fonts/bricolagegrotesque.woff2" as="font" type="font/woff2" crossorigin>
-<script type="module" src="app.js?v=2"></script>
+<script type="module" src="app.js?v=3"></script>
 </head>
 <body>
 <a class="skip" href="#contenido">Ir al contenido</a>
@@ -48,16 +48,16 @@
 <p class="eyebrow">02 / ESCUCHAR</p>
 <h2>¿Qué cambia sin la voz?</h2>
 <p>Escucha el mismo fragmento en ambas versiones. Fíjate en qué sonido pasa al primer plano cuando sale la voz.</p>
-<figure class="video">
+<figure class="video" id="version-player">
 <iframe src="https://www.youtube-nocookie.com/embed/4NRXx6U8ABQ?playsinline=1&amp;hl=es"
   title="Blinding Lights · Video oficial de The Weeknd"
   width="960" height="540" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
-  allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
-<figcaption><span>Video oficial · The Weeknd</span><a href="https://www.youtube.com/watch?v=4NRXx6U8ABQ" target="_blank" rel="noopener">Ver en YouTube ↗</a></figcaption>
+  allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+<figcaption><span id="version-title" aria-live="polite">Video oficial · The Weeknd</span><span class="video-links"><a href="https://www.youtube.com/watch?v=4NRXx6U8ABQ" data-embed="4NRXx6U8ABQ" data-caption="Video oficial" hidden>Volver al video</a><a id="youtube-link" href="https://www.youtube.com/watch?v=4NRXx6U8ABQ" target="_blank" rel="noopener">Ver en YouTube ↗</a></span></figcaption>
 </figure>
 <div class="listen">
-<article><div class="record" aria-hidden="true">♫</div><div><h3>Audio original</h3><p>The Weeknd · con voz</p></div><a class="button" href="https://www.youtube.com/watch?v=fHI8X4OXluQ" target="_blank" rel="noopener">Escuchar ↗<span class="sr"> audio original en YouTube</span></a></article>
-<article><div class="record instrumental" aria-hidden="true">♬</div><div><h3>Instrumental oficial</h3><p>The Weeknd · sin voz</p></div><a class="button" href="https://www.youtube.com/watch?v=XajaJYraODs" target="_blank" rel="noopener">Escuchar ↗<span class="sr"> instrumental en YouTube</span></a></article>
+<article><div class="record" aria-hidden="true">♫</div><div><h3>Audio original</h3><p>The Weeknd · con voz</p></div><a class="button" href="https://www.youtube.com/watch?v=fHI8X4OXluQ" data-embed="fHI8X4OXluQ" data-caption="Audio original">Escuchar aquí<span class="sr"> el audio original</span></a></article>
+<article><div class="record instrumental" aria-hidden="true">♬</div><div><h3>Instrumental oficial</h3><p>The Weeknd · sin voz</p></div><a class="button" href="https://www.youtube.com/watch?v=XajaJYraODs" data-embed="XajaJYraODs" data-caption="Instrumental oficial">Escuchar aquí<span class="sr"> la instrumental</span></a></article>
 </div>
 
 </section>
@@ -67,15 +67,15 @@
 <h2>Entra al estudio.</h2>
 <p>Prueba <strong>Solo</strong> en la batería y marca el pulso. Luego quita Solo y silencia la voz para comparar la mezcla.</p>
 <div class="mixer">
+<p class="status" id="audio-status" role="status">Comprobando si hay pistas disponibles…</p>
+<details class="local"><summary>Cargar mis archivos de audio</summary><p>Selecciona juntos los seis MP3 separados: batería, bajo, teclados, voz, guitarras y otros sonidos. Se quedan en este dispositivo.</p><label for="files" class="button file-label">Seleccionar las seis pistas</label><input class="sr" type="file" id="files" multiple accept=".mp3,audio/mpeg"></details>
 <div class="transport">
-<button class="primary play" id="play" type="button">▶ Reproducir</button>
+<button class="primary play" id="play" type="button" disabled aria-describedby="audio-status">▶ Reproducir</button>
 <span class="time" id="time">0:00 / —</span>
 <label class="sr" for="seek">Posición de reproducción</label><input id="seek" type="range" min="0" max="1" value="0" step=".1" disabled>
 <button id="reset" type="button">Restablecer mezcla</button>
 </div>
-<p class="status" id="audio-status" role="status">Si tienes las pistas en tu dispositivo, cárgalas para mezclar. Puedes usar las versiones oficiales para escuchar la canción.</p>
 <div id="tracks"></div>
-<details class="local"><summary>Cargar mis archivos de audio</summary><p>Selecciona los seis MP3 originales juntos. Los archivos se quedan en tu dispositivo.</p><label for="files" class="button file-label">Seleccionar las seis pistas</label><input class="sr" type="file" id="files" multiple accept=".mp3,audio/mpeg"></details>
 </div>
 </section>
 

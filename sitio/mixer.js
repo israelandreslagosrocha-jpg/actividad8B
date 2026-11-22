@@ -8,6 +8,7 @@ const files = document.querySelector('#files');
 const local = files.closest('details');
 const AudioEngine = window.AudioContext || window.webkitAudioContext;
 let context, master, sources = [], buffers, timer, selectedFiles;
+let hostedAudio = false, loading = false;
 let offset = 0, startAt = 0, duration = 0, playing = false;
 
 const tracks = layers.map(({ id: key, title, color, file }) => {
@@ -140,12 +141,36 @@ function start() {
   tick();
 }
 
+function updateAvailability() {
+  play.disabled = loading || (!hostedAudio && !selectedFiles);
+}
+
+async function checkHostedAudio() {
+  try {
+    const response = await fetch(tracks[0].file, {
+      method: 'HEAD',
+      signal: AbortSignal.timeout(4000),
+    });
+    hostedAudio = response.ok && response.headers.get('Content-Type')?.startsWith('audio/');
+  } catch {
+    hostedAudio = false;
+  }
+  if (!selectedFiles) {
+    local.open = !hostedAudio;
+    status.textContent = hostedAudio
+      ? 'Las seis pistas se cargan al pulsar Reproducir.'
+      : 'Para usar el mezclador, selecciona los seis MP3. Puedes escuchar las versiones oficiales arriba.';
+  }
+  updateAvailability();
+}
+
 play.addEventListener('click', async () => {
   if (playing) {
     pause();
     return;
   }
-  play.disabled = files.disabled = true;
+  loading = files.disabled = true;
+  updateAvailability();
   try {
     if (!context) {
       context = new AudioEngine();
@@ -162,7 +187,8 @@ play.addEventListener('click', async () => {
     local.open = true;
     status.textContent = 'No se pudieron reproducir las pistas. Prueba seleccionando los seis MP3 en «Cargar mis archivos de audio».';
   } finally {
-    play.disabled = files.disabled = false;
+    loading = files.disabled = false;
+    updateAvailability();
   }
 });
 
@@ -182,7 +208,7 @@ document.querySelector('#reset').addEventListener('click', () => {
     track.volume.value = .8;
   });
   updateMix();
-  status.textContent = 'Mezcla restablecida.';
+  if (hostedAudio || selectedFiles) status.textContent = 'Mezcla restablecida.';
 });
 
 files.addEventListener('change', () => {
@@ -203,8 +229,11 @@ files.addEventListener('change', () => {
   renderTime();
   for (const { canvas } of tracks) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
   status.textContent = 'Seis pistas seleccionadas. Pulsa Reproducir para cargarlas.';
+  updateAvailability();
 });
 
 document.querySelectorAll('.listen a, .video figcaption a').forEach(link => link.addEventListener('click', () => {
   if (playing) pause();
 }));
+
+void checkHostedAudio();
