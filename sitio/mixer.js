@@ -205,8 +205,6 @@ files.addEventListener('change', () => {
   status.textContent = 'Seis pistas seleccionadas. Pulsa Reproducir para cargarlas.';
 });
 
-document.querySelectorAll('.listen a').forEach(link => link.addEventListener('click', () => {
+document.querySelectorAll('.listen a, .video figcaption a').forEach(link => link.addEventListener('click', () => {
   if (playing) pause();
 }));
-
-document.addEventListener('official-video', () => { if (playing) pause(); });

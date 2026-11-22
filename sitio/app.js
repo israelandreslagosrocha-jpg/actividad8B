@@ -121,16 +121,6 @@ form.addEventListener('submit', event => {
 
 document.querySelector('#print').addEventListener('click', () => window.print());
 
-document.querySelector('#video-play').addEventListener('click', event => {
-  document.dispatchEvent(new Event('official-video'));
-  const video = document.createElement('iframe');
-  video.src = 'https://www.youtube-nocookie.com/embed/4NRXx6U8ABQ?autoplay=1';
-  video.title = 'Blinding Lights · Video oficial de The Weeknd';
-  video.allow = 'autoplay; encrypted-media; picture-in-picture';
-  video.allowFullscreen = true;
-  event.currentTarget.replaceWith(video);
-});
-
 document.querySelector('#download').addEventListener('click', () => {
   const data = answers();
   const text = [

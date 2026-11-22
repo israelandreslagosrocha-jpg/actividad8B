@@ -18,7 +18,7 @@ Abre [el laboratorio local](http://127.0.0.1:8000/). El sitio carga los MP3 prep
 
 ## Revisar y entregar
 
-El borrador se guarda en el navegador y se recupera al recargar. Cuando estén completas las once respuestas, **Revisar y preparar entrega** muestra la hoja de entrega. Usa **Guardar respuestas como PDF** o **Descargar copia TXT** y comparte el archivo por el canal del colegio. El sitio no utiliza cuentas ni transmite el formulario. YouTube se abre o se carga únicamente a petición del estudiante.
+El borrador se guarda en el navegador y se recupera al recargar. Cuando estén completas las once respuestas, **Revisar y preparar entrega** muestra la hoja de entrega. Usa **Guardar respuestas como PDF** o **Descargar copia TXT** y comparte el archivo por el canal del colegio. El sitio no utiliza cuentas ni transmite el formulario. El reproductor oficial de YouTube se carga al acercarse a la sección Escuchar y se inicia al pulsar Reproducir.
 
 Los materiales para el estudiante están en [guía de apoyo](sitio/guia_apoyo.pdf) y [evaluación imprimible](sitio/evaluacion_imprimible.pdf).
 
