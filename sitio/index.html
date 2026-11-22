@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#100e18">
+<title>Blinding Lights · Laboratorio de escucha</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preload" href="assets/fonts/bricolagegrotesque.woff2" as="font" type="font/woff2" crossorigin>
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#contenido">Ir al contenido</a>
+<header class="top"><div class="wrap bar">
+<a class="brand" href="#contenido"><span class="mark" aria-hidden="true">▥</span> Laboratorio de escucha</a>
+<nav aria-label="Etapas"><a href="#aprender">Aprender</a><a href="#escucha">Escuchar</a><a href="#desafio">Demostrar</a></nav>
+</div></header>
+<main class="wrap" id="contenido">
+<section class="hero" aria-labelledby="titulo">
+<div class="art" aria-hidden="true"><div class="sun"></div><div class="grid"></div></div>
+<div class="hero-content">
+<p class="eyebrow">MÚSICA · 8.º BÁSICO</p>
+<h1 id="titulo">Blinding<br>Lights<span>.</span></h1>
+<p class="artist">THE WEEKND</p>
+<p>Explora la canción capa por capa. Prueba tu propia mezcla y explica cómo cambia lo que escuchas.</p>
+<a class="button primary" href="#aprender">Empezar →</a>
+</div>
+</section>
+<div class="resources"><span>Colegio Metodista de Temuco <span class="dot">·</span> MU08 OA 02</span><div><a href="guia_apoyo.pdf" download><span class="icon download-icon" aria-hidden="true">↓</span> Guía PDF</a><a href="evaluacion_imprimible.pdf" download><span class="icon download-icon" aria-hidden="true">↓</span> Evaluación imprimible</a></div></div>
+
+<section class="stage" id="aprender">
+<p class="eyebrow">01 / APRENDER</p>
+<h2>Cinco formas de escuchar.</h2>
+<p>Piensa en un sonido que reconozcas al instante. Estas ideas te ayudan a explicar qué lo hace distinto.</p>
+<dl class="concept-grid">
+<div><span class="diagram" aria-hidden="true">● · ● · ●</span><dt>Ritmo</dt><dd>Golpes y pausas que organizan el pulso, como un patrón que palmeas al bailar.</dd></div>
+<div><span class="diagram" aria-hidden="true">▂ ▂ ▃ ▂</span><dt>Bajo</dt><dd>Notas graves que sostienen la base, como el grave que sigue un beat.</dd></div>
+<div><span class="diagram" aria-hidden="true">▥ · ▥ · ▥</span><dt>Armonía</dt><dd>Acordes que acompañan y dan ambiente, como el fondo de una escena de videojuego.</dd></div>
+<div><span class="diagram" aria-hidden="true">▂ ▅ ▃ ▇</span><dt>Melodía</dt><dd>Notas sucesivas que forman una frase, como el motivo de un juego que puedes tararear.</dd></div>
+<div><span class="diagram" aria-hidden="true">♪ ♫ ♪</span><dt>Voz</dt><dd>Parte cantada que puede llevar una melodía y comunicar palabras, como en un coro.</dd></div>
+</dl>
+<p>Los teclados pueden tocar acordes y melodías. Escucha qué función cumplen en cada fragmento.</p>
+<a class="button" href="#escucha">Pasar a la escucha →</a>
+</section>
+
+<section class="stage" id="escucha">
+<p class="eyebrow">02 / ESCUCHAR</p>
+<h2>¿Qué cambia sin la voz?</h2>
+<p>Escucha el mismo fragmento en ambas versiones. Fíjate en qué sonido pasa al primer plano cuando sale la voz.</p>
+<div id="video" class="video"><button type="button" id="video-play" class="primary"><span class="icon play-icon" aria-hidden="true"></span> Cargar video oficial</button></div>
+<div class="listen">
+<article><div class="record" aria-hidden="true">♫</div><div><h3>Audio original</h3><p>The Weeknd · con voz</p></div><a class="button" href="https://www.youtube.com/watch?v=fHI8X4OXluQ" target="_blank" rel="noopener">Escuchar ↗<span class="sr"> audio original en YouTube</span></a></article>
+<article><div class="record instrumental" aria-hidden="true">♬</div><div><h3>Instrumental oficial</h3><p>The Weeknd · sin voz</p></div><a class="button" href="https://www.youtube.com/watch?v=XajaJYraODs" target="_blank" rel="noopener">Escuchar ↗<span class="sr"> instrumental en YouTube</span></a></article>
+</div>
+
+</section>
+
+<section class="stage" id="mezcla">
+<p class="eyebrow">LABORATORIO MULTIPISTA</p>
+<h2>Entra al estudio.</h2>
+<p>Prueba <strong>Solo</strong> en la batería y marca el pulso. Luego quita Solo y silencia la voz para comparar la mezcla.</p>
+<div class="mixer">
+<div class="transport">
+<button class="primary play" id="play" type="button">▶ Reproducir</button>
+<span class="time" id="time">0:00 / —</span>
+<label class="sr" for="seek">Posición de reproducción</label><input id="seek" type="range" min="0" max="1" value="0" step=".1" disabled>
+<button id="reset" type="button">Restablecer mezcla</button>
+</div>
+<p class="status" id="audio-status" role="status">Si tienes las pistas en tu dispositivo, cárgalas para mezclar. Puedes usar las versiones oficiales para escuchar la canción.</p>
+<div id="tracks"></div>
+<details class="local"><summary>Cargar mis archivos de audio</summary><p>Selecciona los seis MP3 originales juntos. Los archivos se quedan en tu dispositivo.</p><label for="files" class="button file-label">Seleccionar las seis pistas</label><input class="sr" type="file" id="files" multiple accept=".mp3,audio/mpeg"></details>
+</div>
+</section>
+
+<section class="stage" id="desafio">
+<p class="eyebrow">03 / DEMOSTRAR</p>
+<h2>Cuéntame qué escuchaste.</h2>
+<p>Responde con tus propias palabras. En las preguntas abiertas, señala un momento o una capa que puedas reconocer al escuchar. Al terminar, guarda el PDF para compartirlo con tu profesor.</p>
+<form id="evaluation">
+<div class="form-head"><span>Evaluación individual · 20 puntos</span><span id="progress-label">0 de 11 respuestas</span><progress id="progress" max="11" value="0" aria-label="Preguntas respondidas"></progress></div>
+<div class="student"><label for="student">Tu nombre</label><input id="student" name="Nombre" autocomplete="name" maxlength="80" required><label for="course">Curso</label><input id="course" name="Curso" maxlength="24" placeholder="Ej. 8.º B" required></div>
+<div id="questions"></div>
+<div class="actions"><p id="form-status" role="status"></p><button type="submit" class="primary">Revisar y preparar entrega →</button><button type="button" id="download">Descargar copia TXT</button></div>
+</form>
+<section id="review" class="review" hidden aria-labelledby="review-title">
+<h2 id="review-title" tabindex="-1">Mis respuestas</h2>
+<p id="review-student"></p>
+<ol id="review-answers"></ol>
+<div class="actions"><button type="button" id="print" class="primary">Guardar respuestas como PDF</button><a class="button" href="#evaluation">Volver a editar</a></div>
+</section>
+</section>
+</main>
+<footer class="wrap footer"><span>Laboratorio de escucha · Música 8.º básico</span><a href="#contenido">Volver arriba ↑</a></footer>
+</body>
+</html>
