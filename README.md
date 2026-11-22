@@ -24,12 +24,14 @@ Los materiales para el estudiante están en [guía de apoyo](sitio/guia_apoyo.pd
 
 ## Publicar y retirar
 
+[Actividad publicada en GitHub Pages](https://israelandreslagosrocha-jpg.github.io/actividad8B/). La guía de apoyo incluye este enlace y su QR.
+
 1. La versión pública puede funcionar con YouTube e importación local. La configuración de Git excluye los originales, las copias MP3 y `docente_privado/`. Confirma la autorización antes de distribuir las pistas desde el sitio.
 2. Si se confirma la autorización, prepara las pistas para el alojamiento acordado. Si van en GitHub Pages, habilita el seguimiento de las seis copias MP3 expresamente. Si van en otro alojamiento autorizado, actualiza las URLs de `tracks.json` y habilita CORS para el dominio de la actividad.
 3. Sube los archivos a `main` del repositorio temporal. En **Settings → Pages**, selecciona **Deploy from a branch → main → / (root)**. La portada de la raíz redirige a `sitio/`. Ambas páginas solicitan no indexación. GitHub Pages es accesible a quien tenga el enlace.
-4. Abre la URL publicada y prueba video, reproducción de las seis pistas, acceso a los PDF, formulario y exportación. Agrega esa URL y el QR a la guía cuando estén confirmados.
+4. Abre la URL publicada y prueba video, reproducción de las seis pistas, acceso a los PDF, formulario y exportación. Si cambia la dirección, actualiza el enlace y el QR de la guía.
 5. Para retirar la actividad, despublica Pages en **Settings → Pages** y confirma que la URL ya no sirve el sitio. Si se alojaron las pistas en otro servicio, retíralas también. Para retirar cualquier copia pública del repositorio temporal, elimina el repositorio cuando ya no se necesite.
 
 ## Alcance de la prueba
 
-Chrome con ventanas de 390 px y 1440 px comprueba el flujo local. Queda pendiente una prueba física en iOS y Android. Si falla el alojamiento de las pistas, el mezclador ofrece importarlas desde el dispositivo. Cuando falla la lectura de `tracks.json`, la evaluación sigue disponible.
+Chrome con ventanas de 320, 375, 390, 768, 1024 y 1440 px comprueba el flujo local. Queda pendiente una prueba física en iOS y Android. Si falla el alojamiento de las pistas, el mezclador ofrece importarlas desde el dispositivo. Cuando falla la lectura de `tracks.json`, la evaluación sigue disponible.
