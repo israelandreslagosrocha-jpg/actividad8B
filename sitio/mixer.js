@@ -1,4 +1,4 @@
-const response = await fetch('./tracks.json');
+const response = await fetch('./tracks.json?v=4');
 if (!response.ok) throw new Error('No se pudo leer la configuración de pistas');
 const layers = await response.json();
 const play = document.querySelector('#play');
@@ -62,19 +62,32 @@ function drawWave(track, buffer) {
 }
 
 async function load() {
-  const decoder = new OfflineAudioContext(1, 1, 24000);
-  const loaded = [];
-  for (const [index, track] of tracks.entries()) {
-    status.textContent = `Cargando pistas… ${index + 1} de ${tracks.length}`;
-    let bytes;
-    if (selectedFiles) {
-      bytes = await selectedFiles[index].arrayBuffer();
-    } else {
-      const response = await fetch(track.file);
-      if (!response.ok) throw new Error('Pista no disponible');
-      bytes = await response.arrayBuffer();
-    }
-    loaded.push(await decoder.decodeAudioData(bytes));
+  const decoder = new OfflineAudioContext(1, 1, 22050);
+  const downloads = new AbortController();
+  const timeout = setTimeout(() => downloads.abort(), 60000);
+  let completed = 0;
+  status.textContent = `Cargando pistas… 0 de ${tracks.length}`;
+  let loaded;
+  try {
+    loaded = await Promise.all(tracks.map(async (track, index) => {
+      let bytes;
+      if (selectedFiles) {
+        bytes = await selectedFiles[index].arrayBuffer();
+      } else {
+        const response = await fetch(track.file, { signal: downloads.signal });
+        if (!response.ok) throw new Error('Pista no disponible');
+        bytes = await response.arrayBuffer();
+      }
+      const audio = await decoder.decodeAudioData(bytes);
+      if (!downloads.signal.aborted) {
+        completed += 1;
+        status.textContent = `Cargando pistas… ${completed} de ${tracks.length}`;
+      }
+      return audio;
+    }));
+  } finally {
+    clearTimeout(timeout);
+    downloads.abort();
   }
   if (Math.max(...loaded.map(buffer => buffer.duration)) - Math.min(...loaded.map(buffer => buffer.duration)) > .1) {
     throw new Error('Las pistas tienen distinta duración');
@@ -182,7 +195,7 @@ play.addEventListener('click', async () => {
     await context.resume();
     if (!buffers) await load();
     start();
-    status.textContent = 'Prueba Solo, Silenciar y el volumen de cada pista.';
+    status.textContent = 'Las seis pistas están sincronizadas. Usa Solo, Silenciar y el volumen para cambiar la mezcla.';
   } catch {
     local.open = true;
     status.textContent = 'No se pudieron reproducir las pistas. Prueba seleccionando los seis MP3 en «Cargar mis archivos de audio».';

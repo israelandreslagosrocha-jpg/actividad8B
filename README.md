@@ -12,9 +12,9 @@ Desde la raíz:
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Abre [el laboratorio local](http://127.0.0.1:8000/). El sitio carga los MP3 preparados en `sitio/assets/audio/` cuando están disponibles. También admite los seis MP3 originales en **Cargar mis archivos de audio**. Escoge todos juntos y luego pulsa **Reproducir**.
+Abre [el laboratorio local](http://127.0.0.1:8000/). El mezclador carga las seis pistas alojadas en Cloudinary. También admite los seis MP3 originales en **Cargar mis archivos de audio**. Escoge todos juntos y luego pulsa **Reproducir**.
 
-`sitio/tracks.json` declara las capas reales. Los seis originales tienen el mismo inicio de contenedor MP3 y la misma duración (203,267 s). Las copias locales para el navegador se convirtieron a mono, 24 kHz y 64 kbps para reducir la descarga y el uso de memoria. Las formas de onda se dibujan con los archivos decodificados. La separación puede contener filtraciones de instrumentos entre pistas.
+`sitio/tracks.json` declara las capas reales. Los seis originales tienen el mismo inicio de contenedor MP3 y la misma duración (203,267 s). Cloudinary entrega las seis pistas optimizadas como MP3 de 22,05 kHz y 96 kbps. Los archivos de entrega comparten inicio y duración de contenedor (203,337 s). Las formas de onda se dibujan con los archivos decodificados. La separación puede contener filtraciones de instrumentos entre pistas.
 
 ## Revisar y entregar
 

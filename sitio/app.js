@@ -1,4 +1,4 @@
-import('./mixer.js?v=3').catch(() => {
+import('./mixer.js?v=4').catch(() => {
   document.querySelector('#play').disabled = true;
   document.querySelector('#audio-status').textContent = 'No se pudieron cargar las capas del mezclador. Recarga la página para volver a intentar.';
 });

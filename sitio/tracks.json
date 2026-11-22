@@ -1,8 +1,38 @@
 [
-  {"id":"Drums","title":"Batería","color":"#ffb56c","file":"./assets/audio/Drums.mp3"},
-  {"id":"Bass","title":"Bajo","color":"#fa90ab","file":"./assets/audio/Bass.mp3"},
-  {"id":"Keys","title":"Teclados","color":"#c9a9ff","file":"./assets/audio/Keys.mp3"},
-  {"id":"Vocals","title":"Voz","color":"#89d9ff","file":"./assets/audio/Vocals.mp3"},
-  {"id":"Guitars","title":"Guitarras","color":"#9ae4c2","file":"./assets/audio/Guitars.mp3"},
-  {"id":"Other","title":"Otros sonidos","color":"#e7d281","file":"./assets/audio/Other.mp3"}
+  {
+    "id": "Drums",
+    "title": "Batería",
+    "color": "#ffb56c",
+    "file": "https://res.cloudinary.com/dhgifjpkh/video/upload/af_22050,br_96k/v1795391596/The_Weeknd_-_Blinding_Lights__Official_Audio_-Drums-C_minor-171bpm-440hz_v1xjg1.mp3"
+  },
+  {
+    "id": "Bass",
+    "title": "Bajo",
+    "color": "#fa90ab",
+    "file": "https://res.cloudinary.com/dhgifjpkh/video/upload/af_22050,br_96k/v1795391596/The_Weeknd_-_Blinding_Lights__Official_Audio_-Bass-C_minor-171bpm-440hz_y5xlxj.mp3"
+  },
+  {
+    "id": "Keys",
+    "title": "Teclados",
+    "color": "#c9a9ff",
+    "file": "https://res.cloudinary.com/dhgifjpkh/video/upload/af_22050,br_96k/v1795391596/The_Weeknd_-_Blinding_Lights__Official_Audio_-Keys-C_minor-171bpm-440hz_gkkznv.mp3"
+  },
+  {
+    "id": "Vocals",
+    "title": "Voz",
+    "color": "#89d9ff",
+    "file": "https://res.cloudinary.com/dhgifjpkh/video/upload/af_22050,br_96k/v1795391595/The_Weeknd_-_Blinding_Lights__Official_Audio_-Vocals-C_minor-171bpm-440hz_ore8nj.mp3"
+  },
+  {
+    "id": "Guitars",
+    "title": "Guitarras",
+    "color": "#9ae4c2",
+    "file": "https://res.cloudinary.com/dhgifjpkh/video/upload/af_22050,br_96k/v1795391596/The_Weeknd_-_Blinding_Lights__Official_Audio_-Guitars-C_minor-171bpm-440hz_nggbbq.mp3"
+  },
+  {
+    "id": "Other",
+    "title": "Otros sonidos",
+    "color": "#e7d281",
+    "file": "https://res.cloudinary.com/dhgifjpkh/video/upload/af_22050,br_96k/v1795391595/The_Weeknd_-_Blinding_Lights__Official_Audio_-Other-C_minor-171bpm-440hz_ajtxbi.mp3"
+  }
 ]
