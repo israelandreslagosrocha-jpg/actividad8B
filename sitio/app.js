@@ -3,7 +3,7 @@ import('./mixer.js?v=4').catch(() => {
   document.querySelector('#audio-status').textContent = 'No se pudieron cargar las capas del mezclador. Recarga la página para volver a intentar.';
 });
 import { questions, functions } from './questions.js';
-import { deliverEvaluation, formId } from './delivery.js';
+import { deliverEvaluation, formId } from './delivery.js?v=6';
 
 const key = 'blinding-lights-8b-v2';
 const form = document.querySelector('#evaluation');
