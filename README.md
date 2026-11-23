@@ -18,7 +18,7 @@ Abre [el laboratorio local](http://127.0.0.1:8000/). El mezclador carga las seis
 
 ## Revisar y entregar
 
-El borrador se guarda en el navegador y se recupera al recargar. Cuando estén completas las once respuestas, **Revisar y preparar entrega** muestra la hoja de entrega. Usa **Guardar respuestas como PDF** o **Descargar copia TXT** y comparte el archivo por el canal del colegio. El sitio no utiliza cuentas ni transmite el formulario. El reproductor oficial de YouTube se carga al acercarse a la sección Escuchar y se inicia al pulsar Reproducir.
+El borrador se guarda en el navegador y se recupera al recargar. Cuando estén completas las once respuestas, **Revisar y preparar entrega** muestra la hoja de entrega. Usa **Guardar respuestas como PDF** o **Descargar copia TXT** y comparte el archivo por el canal del colegio. El estudiante no necesita una cuenta. El envío por correo se activa configurando el identificador público de FormSubmit en `sitio/delivery.js`, tras confirmar el correo institucional. El sitio comparte las respuestas con ese servicio solo cuando se pulsa **Enviar al profesor**. Hasta activar el formulario, quedan disponibles PDF y TXT. El reproductor oficial de YouTube se carga al acercarse a la sección Escuchar y se inicia al pulsar Reproducir.
 
 Los materiales para el estudiante están en [guía de apoyo](sitio/guia_apoyo.pdf) y [evaluación imprimible](sitio/evaluacion_imprimible.pdf).
 

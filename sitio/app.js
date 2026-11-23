@@ -3,11 +3,14 @@ import('./mixer.js?v=4').catch(() => {
   document.querySelector('#audio-status').textContent = 'No se pudieron cargar las capas del mezclador. Recarga la página para volver a intentar.';
 });
 import { questions, functions } from './questions.js';
+import { deliverEvaluation, formId } from './delivery.js';
 
 const key = 'blinding-lights-8b-v2';
 const form = document.querySelector('#evaluation');
 const status = document.querySelector('#form-status');
 const review = document.querySelector('#review');
+const send = document.querySelector('#send');
+const deliveryStatus = document.querySelector('#delivery-status');
 const questionsContainer = document.querySelector('#questions');
 let currentBlock;
 const fields = questions.map(({ block, points, title, options, hint, matching }, index) => {
@@ -51,6 +54,8 @@ const fields = questions.map(({ block, points, title, options, hint, matching },
 });
 
 let canSave = true;
+let receipt = '';
+let sending = false;
 try {
   const saved = JSON.parse(localStorage.getItem(key) || '{}');
   for (const control of form.querySelectorAll('[name]')) {
@@ -60,6 +65,7 @@ try {
       else control.value = value;
     }
   }
+  if (typeof saved.receipt === 'string') receipt = saved.receipt;
 } catch {
   canSave = false;
 }
@@ -76,7 +82,7 @@ function renderProgress(data = answers()) {
 
 function save(data) {
   try {
-    localStorage.setItem(key, JSON.stringify({ answers: data }));
+    localStorage.setItem(key, JSON.stringify({ answers: data, receipt }));
     canSave = true;
   } catch {
     canSave = false;
@@ -87,8 +93,17 @@ function showStatus() {
   status.textContent = canSave ? 'Tu borrador se guarda en este navegador.' : 'Este navegador no pudo guardar el borrador. Descarga una copia si necesitas salir.';
 }
 
+function showDelivery() {
+  send.disabled = !formId || sending || Boolean(receipt);
+  if (receipt) deliveryStatus.textContent = `Evaluación enviada. Comprobante: ${receipt}.`;
+  else if (sending) deliveryStatus.textContent = 'Enviando al profesor…';
+  else if (formId) deliveryStatus.textContent = 'Al enviar, compartes tu nombre, curso y respuestas con tu profesor.';
+  else deliveryStatus.textContent = 'La entrega por correo está pendiente de activación. Puedes guardar el PDF.';
+}
+
 form.addEventListener('input', () => {
   review.hidden = true;
+  receipt = '';
   const data = answers();
   renderProgress(data);
   save(data);
@@ -116,7 +131,39 @@ form.addEventListener('submit', event => {
   });
   document.querySelector('#review-answers').replaceChildren(...items);
   review.hidden = false;
+  showDelivery();
   document.querySelector('#review-title').focus();
+});
+
+send.addEventListener('click', async () => {
+  if (sending || receipt || !formId) return;
+  const data = answers();
+  const deliveryId = globalThis.crypto?.randomUUID?.() || String(Date.now());
+  const payload = {
+    _subject: 'Evaluación de Música 8.º básico · Blinding Lights',
+    _url: 'https://israelandreslagosrocha-jpg.github.io/actividad8B/sitio/',
+    Nombre: data.Nombre,
+    Curso: data.Curso,
+    Comprobante: deliveryId,
+  };
+  fields.forEach(({ id, title }) => { payload[`${id}. ${title}`] = data[id]; });
+
+  sending = true;
+  showDelivery();
+  const controls = form.querySelectorAll('input, select, textarea, button[type=submit]');
+  controls.forEach(control => { control.disabled = true; });
+  try {
+    await deliverEvaluation(payload);
+    receipt = deliveryId;
+    save(data);
+  } catch {
+    deliveryStatus.textContent = 'No pudimos confirmar el envío. Tus respuestas siguen guardadas. Intenta otra vez o guarda el PDF.';
+  } finally {
+    sending = false;
+    controls.forEach(control => { control.disabled = false; });
+    send.disabled = Boolean(receipt);
+    if (receipt) showDelivery();
+  }
 });
 
 document.querySelector('#print').addEventListener('click', () => window.print());

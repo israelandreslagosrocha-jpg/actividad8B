@@ -8,7 +8,7 @@
 <title>Blinding Lights · Laboratorio de escucha</title>
 <link rel="stylesheet" href="style.css?v=3">
 <link rel="preload" href="assets/fonts/bricolagegrotesque.woff2" as="font" type="font/woff2" crossorigin>
-<script type="module" src="app.js?v=4"></script>
+<script type="module" src="app.js?v=5"></script>
 </head>
 <body>
 <a class="skip" href="#contenido">Ir al contenido</a>
@@ -82,7 +82,7 @@
 <section class="stage" id="desafio">
 <p class="eyebrow">03 / DEMOSTRAR</p>
 <h2>Cuéntame qué escuchaste.</h2>
-<p>Responde con tus propias palabras. En las preguntas abiertas, señala un momento o una capa que puedas reconocer al escuchar. Al terminar, guarda el PDF para compartirlo con tu profesor.</p>
+<p>Responde con tus propias palabras. En las preguntas abiertas, señala un momento o una capa que puedas reconocer al escuchar. Revisa tus respuestas antes de entregarlas. También puedes guardar una copia.</p>
 <form id="evaluation">
 <div class="form-head"><span>Evaluación individual · 20 puntos</span><span id="progress-label">0 de 11 respuestas</span><progress id="progress" max="11" value="0" aria-label="Preguntas respondidas"></progress></div>
 <div class="student"><label for="student">Tu nombre</label><input id="student" name="Nombre" autocomplete="name" maxlength="80" required><label for="course">Curso</label><input id="course" name="Curso" maxlength="24" placeholder="Ej. 8.º B" required></div>
@@ -93,7 +93,8 @@
 <h2 id="review-title" tabindex="-1">Mis respuestas</h2>
 <p id="review-student"></p>
 <ol id="review-answers"></ol>
-<div class="actions"><button type="button" id="print" class="primary">Guardar respuestas como PDF</button><a class="button" href="#evaluation">Volver a editar</a></div>
+<p id="delivery-status" role="status"></p>
+<div class="actions"><button type="button" id="send" class="primary" disabled>Enviar al profesor</button><button type="button" id="print">Guardar respuestas como PDF</button><a class="button" href="#evaluation">Volver a editar</a></div>
 </section>
 </section>
 </main>
